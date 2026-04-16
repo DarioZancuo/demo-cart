@@ -13,3 +13,4 @@ public class CarrelloAbstractApplication {
 }
 
 //ciao test thomas
+//ciao da emanuele
