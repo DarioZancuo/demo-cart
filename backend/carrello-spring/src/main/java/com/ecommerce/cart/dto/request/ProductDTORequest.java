@@ -7,5 +7,5 @@ public record ProductDTORequest(
 	    String name, 
 	    String description,
 	    Double price,   
-	    Category category
+	    Category category 
 	) {}
