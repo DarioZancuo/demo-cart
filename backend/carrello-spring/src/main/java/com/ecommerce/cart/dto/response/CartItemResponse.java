@@ -8,4 +8,5 @@ public record CartItemResponse(
         BigDecimal unitPrice,
         Integer quantity,
         BigDecimal subtotal
+        
 ) {}

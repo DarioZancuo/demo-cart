@@ -1,10 +1,8 @@
 package com.ecommerce.cart.dto.response;
 
 public record ApiResponse<T>(
-        boolean success,
-        String message,
-        T data
-) {
+		
+		boolean success, String message, T data) {
 
     public static <T> ApiResponse<T> success(String message) {
         return new ApiResponse<>(true, message, null);

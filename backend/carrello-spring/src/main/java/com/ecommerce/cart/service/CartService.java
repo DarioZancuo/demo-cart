@@ -7,10 +7,10 @@ import com.ecommerce.cart.dto.response.CartResponse;
 import com.ecommerce.cart.entity.jpa.Product;
 import com.ecommerce.cart.entity.redis.CartItemRedis;
 import com.ecommerce.cart.entity.redis.CartRedis;
+import com.ecommerce.cart.exception.custom.BadRequestException;
 import com.ecommerce.cart.exception.custom.NotFoundException;
 import com.ecommerce.cart.repository.ICartRedisRepository;
 import com.ecommerce.cart.repository.ProductRepository;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,34 +22,32 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class CartService {
 
+    private static final long CART_TTL_SECONDS = 60 * 60 * 24; // 1 giorno
+
     private final ICartRedisRepository cartRedisRepository;
     private final ProductRepository productRepository;
 
-    private static final long CART_TTL_SECONDS = 60 * 60 * 24 * 1; // 1d
-
+    //getCart
     public CartResponse getCart(Long userId) {
         CartRedis cart = getOrCreateCart(userId);
-        recalculateCart(cart);
-        cartRedisRepository.save(cart);
-        return toResponse(cart);
+        return saveAndBuildResponse(cart);
     }
 
+    //addItem
     @Transactional(readOnly = true)
     public CartResponse addItem(Long userId, AddItemCartRequest request) {
-        Product product = productRepository.findById(request.productId())
-                .orElseThrow(() -> new NotFoundException("Product not found with id: " + request.productId()));
+        validateQuantity(request.quantity());
 
+        Product product = getProductOrThrow(request.productId());
         CartRedis cart = getOrCreateCart(userId);
 
-        CartItemRedis existingItem = cart.getItems().stream()
-                .filter(item -> item.getProductId().equals(product.getId()))
-                .findFirst()
-                .orElse(null);
+        CartItemRedis existingItem = findCartItem(cart, product.getId());
 
         if (existingItem != null) {
-            existingItem.setQuantity(existingItem.getQuantity() + request.quantity());
+            int newQuantity = existingItem.getQuantity() + request.quantity();
+            existingItem.setQuantity(newQuantity);
             existingItem.setSubtotal(existingItem.getUnitPrice()
-                    .multiply(BigDecimal.valueOf(existingItem.getQuantity())));
+                    .multiply(BigDecimal.valueOf(newQuantity)));
         } else {
             CartItemRedis newItem = CartItemRedis.builder()
                     .productId(product.getId())
@@ -62,71 +60,79 @@ public class CartService {
             cart.getItems().add(newItem);
         }
 
-        recalculateCart(cart);
-        cart.setTtl(CART_TTL_SECONDS);
-        cartRedisRepository.save(cart);
-
-        return toResponse(cart);
+        return saveAndBuildResponse(cart);
     }
 
+    //udpdateItemQty
     public CartResponse updateItemQuantity(Long userId, UpdateQtyRequest request) {
-        CartRedis cart = getCartOrThrow(userId);
+        validateQuantity(request.quantity());
 
-        CartItemRedis item = cart.getItems().stream()
-                .filter(i -> i.getProductId().equals(request.productId()))
-                .findFirst()
-                .orElseThrow(() -> new NotFoundException("Product not found in cart: " + request.productId()));
+        CartRedis cart = getCartOrThrow(userId);
+        CartItemRedis item = getCartItemOrThrow(cart, request.productId());
 
         item.setQuantity(request.quantity());
         item.setSubtotal(item.getUnitPrice().multiply(BigDecimal.valueOf(request.quantity())));
 
-        recalculateCart(cart);
-        cart.setTtl(CART_TTL_SECONDS);
-        cartRedisRepository.save(cart);
-
-        return toResponse(cart);
+        return saveAndBuildResponse(cart);
     }
 
+    //removeItem
     public CartResponse removeItem(Long userId, Long productId) {
         CartRedis cart = getCartOrThrow(userId);
 
-        boolean removed = cart.getItems().removeIf(item -> item.getProductId().equals(productId));
+        CartItemRedis item = getCartItemOrThrow(cart, productId);
+        cart.getItems().remove(item);
 
-        if (!removed) {
-            throw new NotFoundException("Product not found in cart: " + productId);
-        }
-
-        recalculateCart(cart);
-        cart.setTtl(CART_TTL_SECONDS);
-        cartRedisRepository.save(cart);
-
-        return toResponse(cart);
+        return saveAndBuildResponse(cart);
     }
 
+    //clearCart
     public void clearCart(Long userId) {
-        String cartId = buildCartId(userId);
-        cartRedisRepository.deleteById(cartId);
+        cartRedisRepository.deleteById(buildCartId(userId));
     }
 
+    // Helpers
     
-    //Helper
+    private Product getProductOrThrow(Long productId) {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new NotFoundException("Product not found with id: " + productId));
+    }
+
     private CartRedis getOrCreateCart(Long userId) {
         return cartRedisRepository.findById(buildCartId(userId))
-                .orElse(
-                        CartRedis.builder()
-                                .id(buildCartId(userId))
-                                .userId(userId)
-                                .items(new ArrayList<>())
-                                .totalPrice(BigDecimal.ZERO)
-                                .totalQuantity(0)
-                                .ttl(CART_TTL_SECONDS)
-                                .build()
-                );
+                .orElseGet(() -> CartRedis.builder()
+                        .id(buildCartId(userId))
+                        .userId(userId)
+                        .items(new ArrayList<>())
+                        .totalPrice(BigDecimal.ZERO)
+                        .totalQuantity(0)
+                        .ttl(CART_TTL_SECONDS)
+                        .build());
     }
 
     private CartRedis getCartOrThrow(Long userId) {
         return cartRedisRepository.findById(buildCartId(userId))
                 .orElseThrow(() -> new NotFoundException("Cart not found for user: " + userId));
+    }
+
+    private CartItemRedis findCartItem(CartRedis cart, Long productId) {
+        return cart.getItems().stream()
+                .filter(item -> item.getProductId().equals(productId))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private CartItemRedis getCartItemOrThrow(CartRedis cart, Long productId) {
+        return cart.getItems().stream()
+                .filter(item -> item.getProductId().equals(productId))
+                .findFirst()
+                .orElseThrow(() -> new NotFoundException("Product not found in cart: " + productId));
+    }
+
+    private void validateQuantity(Integer quantity) {
+        if (quantity == null || quantity <= 0) {
+            throw new BadRequestException("Quantity must be greater than 0");
+        }
     }
 
     private String buildCartId(Long userId) {
@@ -146,6 +152,13 @@ public class CartService {
         cart.setTotalPrice(totalPrice);
     }
 
+    private CartResponse saveAndBuildResponse(CartRedis cart) {
+        recalculateCart(cart);
+        cart.setTtl(CART_TTL_SECONDS);
+        cartRedisRepository.save(cart);
+        return toResponse(cart);
+    }
+
     private CartResponse toResponse(CartRedis cart) {
         return new CartResponse(
                 cart.getId(),
@@ -163,4 +176,5 @@ public class CartService {
                 cart.getTotalPrice()
         );
     }
+    
 }
