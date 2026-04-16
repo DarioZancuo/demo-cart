@@ -12,7 +12,6 @@ import com.ecommerce.cart.repository.CategoryRepository;
 import com.ecommerce.cart.repository.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.var;
 import lombok.extern.slf4j.Slf4j;
 
 @Service

@@ -12,7 +12,6 @@ import com.ecommerce.cart.exception.custom.NotFoundException;
 import com.ecommerce.cart.repository.CategoryRepository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.var;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
