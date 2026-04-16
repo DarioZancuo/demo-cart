@@ -25,11 +25,12 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api/products")
 @Slf4j
 @RequiredArgsConstructor
+@Tag(name = "Product Controller", description = "API per la gestione del catalogo prodotti")
 public class ProductController {
 
 	private final ProductService service;
 
-
+	@Operation(summary = "Ottieni tutti i prodotti", description = "Ritorna una lista completa di tutti i prodotti a catalogo")
 	@GetMapping
 	public ResponseEntity<List<ProductDTO>> getAllProducts() {
 		log.info("return all products");
@@ -38,21 +39,23 @@ public class ProductController {
 	}
 
 	
-	@Operation(summary = "Recupera un prodotto per ID")
+	@Operation(summary = "Recupera un prodotto per ID", description = "Fornisce i dettagli di un singolo prodotto cercato tramite il suo identificativo univoco")
 	@GetMapping("/{id}")
 	public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id) {
 		log.info("get product by id");
 
 		return ResponseEntity.ok(service.findById(id));
 	}
-
+	
+	@Operation(summary = "Crea un nuovo prodotto", description = "Aggiunge un nuovo prodotto al database. L'ID viene generato automaticamente.")
 	@PostMapping
 	public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO dto) {
 		log.info("create product");
 
 		return ResponseEntity.ok(service.create(dto));
 	}
-
+	
+	@Operation(summary = "Aggiorna un prodotto esistente", description = "Modifica i dati di un prodotto esistente identificato dall'ID")
 	@PutMapping("/{id}")
 	public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO dto, @PathVariable Long id) {
 		log.info("update product");
@@ -60,7 +63,7 @@ public class ProductController {
 
 	}
 	
-	@Operation(summary = "Elimina un prodotto per ID")
+	@Operation(summary = "Elimina un prodotto per ID", description = "Rimuove definitivamente il prodotto dal sistema")	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
 		log.info("delete product");
@@ -68,12 +71,14 @@ public class ProductController {
 		service.delete(id);
 	}
 
+	@Operation(summary = "Filtra prodotti per categoria", description = "Restituisce una lista di prodotti appartenenti a una specifica categoria")
 	@GetMapping("/category/{categoryId}")
 	public ResponseEntity<List<ProductDTO>> getByCategory(@PathVariable Long categoryId) {
 		log.info("get products by category id: {}", categoryId);
 		return ResponseEntity.ok(service.findByCategory(categoryId));
 	}
 
+	@Operation(summary = "Cerca prodotti per nome", description = "Esegue una ricerca testuale nel catalogo prodotti")
 	@GetMapping("/search")
 	public ResponseEntity<List<ProductDTO>> searchByName(@RequestParam String name) {
 		log.info("search products by name: {}", name);
