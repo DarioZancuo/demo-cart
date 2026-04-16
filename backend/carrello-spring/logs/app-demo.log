@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2026-04-16T13:55:09.698+02:00  INFO 23144 --- [main] c.e.cart.CarrelloAbstractApplication     : Starting CarrelloAbstractApplication using Java 25.0.2 with PID 23144 (C:\Users\candidato\git\demo-cart\backend\carrello-spring\target\classes started by candidato in C:\Users\candidato\git\demo-cart\backend\carrello-spring)
 2026-04-16T13:55:09.700+02:00  INFO 23144 --- [main] c.e.cart.CarrelloAbstractApplication     : No active profile set, falling back to 1 default profile: "default"
 2026-04-16T13:55:11.269+02:00  INFO 23144 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
@@ -49,3 +50,139 @@
 2026-04-16T13:55:25.112+02:00  INFO 23144 --- [http-nio-8080-exec-1] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
 2026-04-16T13:55:25.116+02:00  INFO 23144 --- [http-nio-8080-exec-1] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
 2026-04-16T13:55:25.303+02:00  INFO 23144 --- [http-nio-8080-exec-1] com.ecommerce.cart.service.AuthService   : Login successful for username: rest
+=======
+2026-04-16T12:57:03.105+02:00  INFO 89584 --- [main] c.e.cart.CarrelloAbstractApplication     : Starting CarrelloAbstractApplication using Java 25.0.2 with PID 89584 (/Users/simonecatalano/git/demo-cart/backend/carrello-spring/target/classes started by simonecatalano in /Users/simonecatalano/git/demo-cart/backend/carrello-spring)
+2026-04-16T12:57:03.106+02:00  INFO 89584 --- [main] c.e.cart.CarrelloAbstractApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-16T12:57:03.498+02:00  INFO 89584 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-16T12:57:03.499+02:00  INFO 89584 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-16T12:57:03.563+02:00  INFO 89584 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 3 JPA repository interfaces.
+2026-04-16T12:57:03.573+02:00  INFO 89584 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-16T12:57:03.574+02:00  INFO 89584 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-16T12:57:03.582+02:00  INFO 89584 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecommerce.cart.repository.CategoryRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-04-16T12:57:03.583+02:00  INFO 89584 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecommerce.cart.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-04-16T12:57:03.583+02:00  INFO 89584 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecommerce.cart.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-04-16T12:57:03.583+02:00  INFO 89584 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-04-16T12:57:03.812+02:00  INFO 89584 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-04-16T12:57:03.819+02:00  INFO 89584 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-16T12:57:03.820+02:00  INFO 89584 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-04-16T12:57:03.843+02:00  INFO 89584 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-16T12:57:03.844+02:00  INFO 89584 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 716 ms
+2026-04-16T12:57:03.892+02:00  INFO 89584 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-16T12:57:03.971+02:00  INFO 89584 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:cartdb user=SA
+2026-04-16T12:57:03.972+02:00  INFO 89584 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-16T12:57:03.992+02:00  INFO 89584 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-16T12:57:04.015+02:00  INFO 89584 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
+2026-04-16T12:57:04.028+02:00  INFO 89584 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-16T12:57:04.139+02:00  INFO 89584 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-16T12:57:04.158+02:00  WARN 89584 --- [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-16T12:57:04.164+02:00  INFO 89584 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-16T12:57:04.508+02:00  INFO 89584 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-16T12:57:04.530+02:00  INFO 89584 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T12:57:04.827+02:00  INFO 89584 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailService
+2026-04-16T12:57:04.999+02:00  WARN 89584 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-16T12:57:05.204+02:00  INFO 89584 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:cartdb'
+2026-04-16T12:57:05.248+02:00  INFO 89584 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-04-16T12:57:05.254+02:00  INFO 89584 --- [main] c.e.cart.CarrelloAbstractApplication     : Started CarrelloAbstractApplication in 2.331 seconds (process running for 2.527)
+2026-04-16T12:57:05.255+02:00  WARN 89584 --- [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-16T12:57:05.255+02:00  WARN 89584 --- [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-16T12:57:12.996+02:00  INFO 89584 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-16T12:57:12.997+02:00  INFO 89584 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-16T12:57:12.998+02:00  INFO 89584 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-16T12:57:13.061+02:00  INFO 89584 --- [http-nio-8080-exec-3] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T12:57:13.068+02:00  INFO 89584 --- [http-nio-8080-exec-3] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T12:57:13.082+02:00  INFO 89584 --- [http-nio-8080-exec-3] c.e.cart.controller.ProductController    : get product by id
+2026-04-16T13:02:55.484+02:00  WARN 89584 --- [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m51s407ms).
+2026-04-16T13:28:26.607+02:00  WARN 89584 --- [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m31s122ms).
+2026-04-16T13:46:18.824+02:00  WARN 89584 --- [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m52s215ms).
+2026-04-16T13:46:24.676+02:00  INFO 89584 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-16T13:46:24.690+02:00  INFO 89584 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-04-16T13:46:24.708+02:00  INFO 89584 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T13:46:24.722+02:00  INFO 89584 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-16T13:46:24.726+02:00  INFO 89584 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+>>>>>>> branch 'main' of https://github.com/DarioZancuo/demo-cart.git
+2026-04-16T13:58:35.708+02:00  INFO 12832 --- [main] c.e.cart.CarrelloAbstractApplication     : Starting CarrelloAbstractApplication using Java 25.0.2 with PID 12832 (C:\Users\candidato\git\demo-cart\backend\carrello-spring\target\classes started by candidato in C:\Users\candidato\git\demo-cart\backend\carrello-spring)
+2026-04-16T13:58:35.711+02:00  INFO 12832 --- [main] c.e.cart.CarrelloAbstractApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-16T13:58:36.900+02:00  INFO 12832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-16T13:58:36.903+02:00  INFO 12832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-16T13:58:37.067+02:00  INFO 12832 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.ecommerce.cart.repository.ICartRedisRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2026-04-16T13:58:37.098+02:00  INFO 12832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 183 ms. Found 3 JPA repository interfaces.
+2026-04-16T13:58:37.130+02:00  INFO 12832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-16T13:58:37.132+02:00  INFO 12832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-16T13:58:37.162+02:00  INFO 12832 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecommerce.cart.repository.CategoryRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-04-16T13:58:37.164+02:00  INFO 12832 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecommerce.cart.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-04-16T13:58:37.165+02:00  INFO 12832 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.ecommerce.cart.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-04-16T13:58:37.179+02:00  INFO 12832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 1 Redis repository interface.
+2026-04-16T13:58:37.850+02:00  INFO 12832 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-04-16T13:58:37.866+02:00  INFO 12832 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-16T13:58:37.867+02:00  INFO 12832 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-04-16T13:58:37.945+02:00  INFO 12832 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-16T13:58:37.945+02:00  INFO 12832 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2179 ms
+2026-04-16T13:58:38.086+02:00  INFO 12832 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-16T13:58:38.326+02:00  INFO 12832 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:cartdb user=SA
+2026-04-16T13:58:38.328+02:00  INFO 12832 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-16T13:58:38.382+02:00  INFO 12832 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-16T13:58:38.439+02:00  INFO 12832 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
+2026-04-16T13:58:38.481+02:00  INFO 12832 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-16T13:58:38.815+02:00  INFO 12832 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-16T13:58:38.873+02:00  WARN 12832 --- [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-16T13:58:38.893+02:00  INFO 12832 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-16T13:58:39.774+02:00  INFO 12832 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-16T13:58:39.833+02:00  INFO 12832 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-16T13:58:40.255+02:00  INFO 12832 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailService
+2026-04-16T13:58:41.266+02:00  WARN 12832 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-16T13:58:41.936+02:00  INFO 12832 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:cartdb'
+2026-04-16T13:58:42.069+02:00  INFO 12832 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-04-16T13:58:42.089+02:00  INFO 12832 --- [main] c.e.cart.CarrelloAbstractApplication     : Started CarrelloAbstractApplication in 7.034 seconds (process running for 7.529)
+2026-04-16T13:58:42.095+02:00  WARN 12832 --- [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-16T13:58:42.095+02:00  WARN 12832 --- [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-16T13:58:48.584+02:00  INFO 12832 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-16T13:58:48.585+02:00  INFO 12832 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-16T13:58:48.588+02:00  INFO 12832 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-04-16T13:58:48.849+02:00  INFO 12832 --- [http-nio-8080-exec-1] c.e.cart.controller.AuthController       : Login request recived
+2026-04-16T13:58:48.850+02:00  INFO 12832 --- [http-nio-8080-exec-1] com.ecommerce.cart.service.AuthService   : Login attempt for username: rest
+2026-04-16T13:58:49.018+02:00  INFO 12832 --- [http-nio-8080-exec-1] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T13:58:49.028+02:00  INFO 12832 --- [http-nio-8080-exec-1] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T13:58:49.192+02:00  INFO 12832 --- [http-nio-8080-exec-1] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T13:58:49.197+02:00  INFO 12832 --- [http-nio-8080-exec-1] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T13:58:49.408+02:00  INFO 12832 --- [http-nio-8080-exec-1] com.ecommerce.cart.service.AuthService   : Login successful for username: rest
+2026-04-16T13:59:11.543+02:00  INFO 12832 --- [http-nio-8080-exec-3] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T13:59:11.548+02:00  INFO 12832 --- [http-nio-8080-exec-3] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T13:59:11.560+02:00  INFO 12832 --- [http-nio-8080-exec-3] c.e.cart.controller.CartController       : GET cart - userId=1
+2026-04-16T14:00:53.867+02:00  INFO 12832 --- [http-nio-8080-exec-6] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T14:00:53.872+02:00  INFO 12832 --- [http-nio-8080-exec-6] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T14:00:53.981+02:00  INFO 12832 --- [http-nio-8080-exec-6] c.e.cart.controller.CartController       : ADD item - userId=1, productId=1, quantity=1
+2026-04-16T14:01:17.448+02:00  INFO 12832 --- [http-nio-8080-exec-7] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T14:01:17.453+02:00  INFO 12832 --- [http-nio-8080-exec-7] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T14:01:17.460+02:00  INFO 12832 --- [http-nio-8080-exec-7] c.e.cart.controller.CartController       : ADD item - userId=1, productId=2, quantity=2
+2026-04-16T14:01:33.581+02:00  INFO 12832 --- [http-nio-8080-exec-8] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T14:01:33.586+02:00  INFO 12832 --- [http-nio-8080-exec-8] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T14:01:33.592+02:00  INFO 12832 --- [http-nio-8080-exec-8] c.e.cart.controller.CartController       : GET cart - userId=1
+2026-04-16T14:02:26.887+02:00  INFO 12832 --- [http-nio-8080-exec-9] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T14:02:26.892+02:00  INFO 12832 --- [http-nio-8080-exec-9] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T14:02:26.912+02:00  INFO 12832 --- [http-nio-8080-exec-9] c.e.cart.controller.CartController       : UPDATE item qty - userId=1, productId=2, quantity=5
+2026-04-16T14:02:37.591+02:00  INFO 12832 --- [http-nio-8080-exec-10] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T14:02:37.599+02:00  INFO 12832 --- [http-nio-8080-exec-10] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T14:02:37.605+02:00  INFO 12832 --- [http-nio-8080-exec-10] c.e.cart.controller.CartController       : UPDATE item qty - userId=1, productId=2, quantity=1
+2026-04-16T14:03:34.182+02:00  INFO 12832 --- [http-nio-8080-exec-2] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T14:03:34.187+02:00  INFO 12832 --- [http-nio-8080-exec-2] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T14:03:34.196+02:00  INFO 12832 --- [http-nio-8080-exec-2] c.e.cart.controller.CartController       : REMOVE item - userId=1, productId=2
+2026-04-16T14:03:53.046+02:00  INFO 12832 --- [http-nio-8080-exec-1] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T14:03:53.050+02:00  INFO 12832 --- [http-nio-8080-exec-1] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T14:03:53.056+02:00  WARN 12832 --- [http-nio-8080-exec-1] c.e.cart.controller.CartController       : CLEAR cart - userId=1
+2026-04-16T14:04:00.319+02:00  INFO 12832 --- [http-nio-8080-exec-3] c.e.cart.service.MyUserDetailService     : Loading user details for username: rest
+2026-04-16T14:04:00.323+02:00  INFO 12832 --- [http-nio-8080-exec-3] c.e.cart.service.MyUserDetailService     : User details loaded successfully for username: rest
+2026-04-16T14:04:00.328+02:00  INFO 12832 --- [http-nio-8080-exec-3] c.e.cart.controller.CartController       : GET cart - userId=1

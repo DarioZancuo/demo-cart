@@ -21,8 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductService {
 
 	private final ProductRepository repository;
-    private final CategoryRepository categoryRepository;
-
+	private final CategoryRepository categoryRepository;
 
 	public List<ProductDTO> findAll() {
 		List<Product> prodotti = repository.findAll();
@@ -31,61 +30,69 @@ public class ProductService {
 	};
 
 	public ProductDTO findById(Long id) {
-        Product product = repository.findById(id)
-                .orElseThrow(() -> new NotFoundException(
-                        "Prodotto non trovato con id: " + id));
-        return convertToDTO(product);
-    }
+		Product product = repository.findById(id)
+				.orElseThrow(() -> new NotFoundException("Prodotto non trovato con id: " + id));
+		return convertToDTO(product);
+	}
 
 	public ProductDTO create(ProductDTO dto) {
-        Category category = categoryRepository.findById(dto.id_cat())
-                .orElseThrow(() -> new NotFoundException("Categoria non trovata con id: " + dto.id_cat()));
+		Category category = categoryRepository.findById(dto.id_cat())
+				.orElseThrow(() -> new NotFoundException("Categoria non trovata con id: " + dto.id_cat()));
 
-        Product product = new Product();
-        product.setName(dto.name());
-        product.setDescription(dto.description());
-        product.setPrice(dto.price());
-        product.setCategory(category);
+		Product product = new Product();
+		product.setName(dto.name());
+		product.setDescription(dto.description());
+		product.setPrice(dto.price());
+		product.setCategory(category);
 
-        Product saved = repository.save(product);
-        log.info("Prodotto creato con id: {}", saved.getId());
-        return convertToDTO(saved);
-    }
-	
+		Product saved = repository.save(product);
+		log.info("Prodotto creato con id: {}", saved.getId());
+		return convertToDTO(saved);
+	}
+
 	public ProductDTO update(ProductDTO dto, Long id) {
-        Product product = repository.findById(id)
-                .orElseThrow(() -> new NotFoundException(
-                        "Prodotto non trovato con id: " + id));
+		Product product = repository.findById(id)
+				.orElseThrow(() -> new NotFoundException("Prodotto non trovato con id: " + id));
 
-        Category category = categoryRepository.findById(dto.id_cat())
-                .orElseThrow(() -> new NotFoundException(
-                        "Categoria non trovata con id: " + dto.id_cat()));
+		Category category = categoryRepository.findById(dto.id_cat())
+				.orElseThrow(() -> new NotFoundException("Categoria non trovata con id: " + dto.id_cat()));
 
-        product.setName(dto.name());
-        product.setDescription(dto.description());
-        product.setPrice(dto.price());
-        product.setCategory(category);
+		product.setName(dto.name());
+		product.setDescription(dto.description());
+		product.setPrice(dto.price());
+		product.setCategory(category);
 
-        Product saved = repository.save(product);
-        log.info("Prodotto aggiornato con id: {}", saved.getId());
-        return convertToDTO(saved);
-    }
+		Product saved = repository.save(product);
+		log.info("Prodotto aggiornato con id: {}", saved.getId());
+		return convertToDTO(saved);
+	}
 
 	public void delete(Long id) {
-        if (!repository.existsById(id)) {
-            throw new NotFoundException(
-                    "Prodotto non trovato con id: " + id);
-        }
-        repository.deleteById(id);
-        log.info("Prodotto eliminato con id: {}", id);
-    }
+		if (!repository.existsById(id)) {
+			throw new NotFoundException("Prodotto non trovato con id: " + id);
+		}
+		repository.deleteById(id);
+		log.info("Prodotto eliminato con id: {}", id);
+	}
 
 	// Metodo helper per la conversione (o usa MapStruct in futuro)
 	private ProductDTO convertToDTO(Product p) {
 		var cat = p.getCategory();
 		return new ProductDTO(p.getId(), p.getName(), p.getDescription(), p.getPrice(), cat.getId(), cat.getName());
 	}
-	// public List<ProductDTO> findByCategory(Long categoryId);
 
-	// public List<ProductDTO> searchByName(String name);
+	public List<ProductDTO> findByCategory(Long categoryId) {
+		if (!categoryRepository.existsById(categoryId)) {
+			throw new NotFoundException("Categoria non trovata con id: " + categoryId);
+		}
+		return repository.findByCategoryId(categoryId).stream().map(this::convertToDTO).toList();
+	}
+
+	public List<ProductDTO> searchByName(String name) {
+		if (name == null || name.isBlank()) {
+			return findAll();
+		}
+		return repository.findByNameContainingIgnoreCase(name).stream().map(this::convertToDTO).toList();
+	}
+
 }

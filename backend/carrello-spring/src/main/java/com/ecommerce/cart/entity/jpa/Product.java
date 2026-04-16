@@ -1,5 +1,7 @@
 package com.ecommerce.cart.entity.jpa;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,7 +32,7 @@ public class Product {
 	private String description;
 	
 	@Column(name="c_price", nullable = false)
-	private Double price;
+	private BigDecimal price;
 	
 	
 	

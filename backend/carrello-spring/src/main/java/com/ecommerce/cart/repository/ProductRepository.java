@@ -12,4 +12,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	//Risoluzione problema query n+1
 	@EntityGraph(attributePaths = { "category" })
 	List<Product> findAll();
+	List<Product> findByCategoryId(Long categoryId);
+    List<Product> findByNameContainingIgnoreCase(String name);
+	
 }
