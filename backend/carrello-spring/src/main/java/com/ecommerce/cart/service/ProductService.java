@@ -79,7 +79,7 @@ public class ProductService {
 
 	// Metodo helper per la conversione (o usa MapStruct in futuro)
 	private ProductDTO convertToDTO(Product p) {
-		var cat = p.getCategory();
+		Category cat = p.getCategory();
 		return new ProductDTO(p.getId(), p.getName(), p.getDescription(), p.getPrice(), p.getImgUrl(), cat.getId(), cat.getName());
 	}
 

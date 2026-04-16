@@ -74,7 +74,6 @@ public class CategoryService {
 
 	// Metodo helper per la conversione in DTO
 	private CategoryDTO convertToDTO(Category c) {
-		var cat = c.getProducts();
 
 		return new CategoryDTO(c.getId(), c.getName(), c.getDescription());
 	}
