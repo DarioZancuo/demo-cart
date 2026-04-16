@@ -108,6 +108,8 @@ public class CartService {
         cartRedisRepository.deleteById(cartId);
     }
 
+    
+    //Helper
     private CartRedis getOrCreateCart(Long userId) {
         return cartRedisRepository.findById(buildCartId(userId))
                 .orElse(
